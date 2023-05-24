@@ -1,0 +1,152 @@
+<div class="start">
+  <div class="getReady">
+    <h1>Train Seat Booking</h1>
+  </div>
+
+  <!-- Added input field to take number of seat as input -->
+  <div class="searchBar">
+    <div class="space"></div>
+    <input
+      type="number"
+      id="numSeats"
+      [(ngModel)]="numSeats"
+      min="1"
+      max="7"
+      step="1"
+      placeholder="Type number of seats"
+    />
+
+    <!-- Added button to trigger booking of ticket -->
+    <button (click)="bookSeats(numSeats)">Book Seats</button>
+    <div class="space"></div>
+  </div>
+
+  <!-- Showing status of Seat Using different colour and replica of seats -->
+  <!-- left is front of coach -->
+  <ul class="showcase">
+    <li>
+      <div class="seat"></div>
+      <small>Empty</small>
+    </li>
+    <li>
+      <div class="seat selected"></div>
+      <small>Your Booked Seats</small>
+    </li>
+    <li>
+      <div class="seat occupied"></div>
+      <small>Occupied</small>
+    </li>
+  </ul>
+
+  <div class="train-seat">
+    <table>
+      <tr>
+        <td
+          *ngFor="let seat of column1"
+          class="seat"
+          [ngClass]="{ occupied: seat.isOccupied, selected: seat.isSelected }"
+        >
+          <div class="seat-number">
+            <div class="row">
+              <span>{{ seat.number }}</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td
+          *ngFor="let seat of column2"
+          class="seat"
+          [ngClass]="{ occupied: seat.isOccupied, selected: seat.isSelected }"
+        >
+          <div class="seat-number">
+            <div class="row">
+              <span>{{ seat.number }}</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td
+          *ngFor="let seat of column3"
+          class="seat"
+          [ngClass]="{ occupied: seat.isOccupied, selected: seat.isSelected }"
+        >
+          <div class="seat-number">
+            <div class="row">
+              <span>{{ seat.number }}</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <div class="space"></div>
+      </tr>
+      <tr>
+        <td
+          *ngFor="let seat of column4"
+          class="seat"
+          [ngClass]="{ occupied: seat.isOccupied, selected: seat.isSelected }"
+        >
+          <div class="seat-number">
+            <div class="row">
+              <span>{{ seat.number }}</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td
+          *ngFor="let seat of column5"
+          class="seat"
+          [ngClass]="{ occupied: seat.isOccupied, selected: seat.isSelected }"
+        >
+          <div class="seat-number">
+            <div class="row">
+              <span>{{ seat.number }}</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td
+          *ngFor="let seat of column6"
+          class="seat"
+          [ngClass]="{ occupied: seat.isOccupied, selected: seat.isSelected }"
+        >
+          <div class="seat-number">
+            <div class="row">
+              <span>{{ seat.number }}</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td
+          *ngFor="let seat of column7"
+          class="seat"
+          [ngClass]="{ occupied: seat.isOccupied, selected: seat.isSelected }"
+        >
+          <div class="seat-number">
+            <div class="row">
+              <span>{{ seat.number }}</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Showing successful message for booking -->
+    <div *ngIf="this.flag === 0; else elseBlock"></div>
+    <ng-template #elseBlock>
+      <table>
+        <tr>
+          <td><h5>Your booking has been confirmed. Your seats are:</h5></td>
+          <td *ngFor="let todo of bookedSeat" class="success">
+            <h5>{{ todo }}</h5>
+          </td>
+        </tr>
+      </table>
+    </ng-template>
+  </div>
+</div>
