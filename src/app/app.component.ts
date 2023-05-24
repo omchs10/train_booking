@@ -45,6 +45,10 @@ export class AppComponent {
   //When user will put some number in input and click on Book Seats button, this function will trigger
 
   bookSeats(numSeats: number) {
+  
+    
+    
+
     this.flag = 0;
     this.bookedSeat = [];
 
@@ -55,6 +59,14 @@ export class AppComponent {
       }
     }
 
+        if (!numSeats) {
+
+              alert('Please type number of seat required !');
+              return;
+
+
+        }
+
     if (numSeats > 7 || numSeats <= 0) {
       alert('Please select 1 to 7 seats only!');
       return;
@@ -63,7 +75,7 @@ export class AppComponent {
     const getSeats = this.findAvailableSeats(numSeats);
     if (
       getSeats.availableSeats.length === 0 &&
-      getSeats.totalSeatAvailable > 0
+      getSeats.totalSeatAvailable > 0 
     ) {
       alert(
         getSeats.totalSeatAvailable +
